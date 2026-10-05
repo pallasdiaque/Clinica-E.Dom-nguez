@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clínica E. Domínguez | Odontología integral en Valls</title>
+<meta name="description" content="Clínica dental en el Passeig de l'Estació de Valls. Odontología general, implantología, ortodoncia y urgencias. Cita previa: 977 60 23 34.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%237A1B2C'/><text x='50' y='64' font-size='42' text-anchor='middle' fill='white' font-family='Georgia'>ED</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!--
+  ============================================================
+  DATOS FICTICIOS PENDIENTES DE SUSTITUIR (buscar "FICTICIO"):
+  - Nombres del equipo, especialidades y nº de colegiado
+  - Lista de tratamientos y sus descripciones
+  - Email de contacto
+  - Envío del formulario (Formspree: cambiar TU_ID)
+  - Páginas legales (aviso legal, privacidad, cookies)
+  DATOS REALES: nombre, dirección, teléfono y horario.
+  ============================================================
+-->
+
+<style>
+:root{
+  --granate:#7A1B2C;
+  --granate-dk:#5A111F;
+  --tint:#F3E8EA;
+  --ink:#231B1D;
+  --muted:#675C5F;
+  --line:#E6DADD;
+  --paper:#FCFBFB;
+  --serif:"Literata", Georgia, "Times New Roman", serif;
+  --sans:"Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --wrap:1120px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px))}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+img,iframe{max-width:100%}
+a{color:var(--granate)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--granate);outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;margin:0;color:var(--ink)}
+h2{font-size:clamp(1.9rem,3.6vw,2.6rem);letter-spacing:-.01em}
+h3{font-size:1.25rem}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.lead{color:var(--muted);max-width:56ch;margin-top:14px}
+
+/* Cabecera */
+header{position:sticky;top:0;z-index:20;background:rgba(252,251,251,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px);margin-top:calc(-1 * env(safe-area-inset-top,0px))}
+.bar{display:flex;align-items:center;gap:28px;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.mono{width:40px;height:40px;border-radius:50%;background:var(--granate);color:#fff;display:grid;place-items:center;font:600 1rem/1 var(--serif)}
+.brand b{font:600 1.15rem/1.1 var(--serif);display:block}
+.brand small{color:var(--muted);font-size:.8rem}
+nav{margin-left:auto;display:flex;gap:24px}
+nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
+nav a:hover{color:var(--granate)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{border:0;background:none;font:700 .8rem var(--sans);padding:6px 11px;border-radius:999px;cursor:pointer;color:var(--muted)}
+.lang button[aria-pressed="true"]{background:var(--granate);color:#fff}
+@media (max-width:860px){nav{display:none}.lang{margin-left:auto}}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:3px;font:600 .98rem var(--sans);letter-spacing:.01em;text-decoration:none;border:2px solid var(--granate);cursor:pointer}
+.btn-solid{background:var(--granate);color:#fff}
+.btn-solid:hover{background:var(--granate-dk);border-color:var(--granate-dk)}
+.btn-line{background:transparent;color:var(--granate)}
+.btn-line:hover{background:var(--tint)}
+
+/* Hero */
+.hero{padding:72px 0 88px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.4rem,5.4vw,4.1rem);letter-spacing:-.02em;max-width:14ch}
+.hero .lead{font-size:1.15rem}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.addr{margin-top:28px;color:var(--muted);font-size:.95rem}
+
+/* Panel de horario: el elemento protagonista */
+.status{background:var(--granate);color:#fff;border-radius:4px;padding:36px 34px 30px}
+.status-now{display:flex;align-items:center;gap:12px;font:600 clamp(1.7rem,3vw,2.2rem)/1.1 var(--serif)}
+.dot{width:14px;height:14px;border-radius:50%;background:#9be3b4;box-shadow:0 0 0 6px rgba(155,227,180,.18);flex:none}
+.status.closed .dot{background:#f2b8c0;box-shadow:0 0 0 6px rgba(242,184,192,.18)}
+.status-sub{margin-top:8px;opacity:.88}
+.week{list-style:none;margin:26px 0 0;padding:20px 0 0;border-top:1px solid rgba(255,255,255,.25)}
+.week li{display:flex;justify-content:space-between;padding:7px 10px;margin:0 -10px;border-radius:2px;font-size:.98rem}
+.week li.today{background:rgba(255,255,255,.14);font-weight:700}
+.week li.off span:last-child{opacity:.7}
+
+/* Secciones */
+section.block{padding:88px 0;border-top:1px solid var(--line)}
+.head{max-width:640px;margin-bottom:44px}
+
+/* Tratamientos */
+.treat{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+.treat article{padding:24px 0;border-top:1px solid var(--line)}
+.treat p{color:var(--muted);margin-top:8px;max-width:48ch}
+
+/* Primera visita: secuencia real */
+.visit{background:var(--tint);border-top:0}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:2px solid var(--granate);color:var(--granate);font:600 1.1rem var(--serif);margin-bottom:18px}
+.steps p{color:var(--muted);margin-top:8px}
+
+/* Equipo */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.person .avatar{aspect-ratio:4/5;border-radius:3px;background:var(--tint);display:grid;place-items:center;font:600 3rem var(--serif);color:var(--granate);margin-bottom:18px}
+.person p{color:var(--muted);font-size:.95rem;margin-top:4px}
+
+/* Contacto */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+form{display:grid;gap:16px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:grid;gap:6px;font-weight:500;font-size:.92rem}
+input,select,textarea{font:inherit;padding:12px 14px;border:1px solid #cdbfc2;border-radius:3px;background:#fff;color:var(--ink);width:100%}
+textarea{min-height:110px;resize:vertical}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.88rem;color:var(--muted)}
+.check input{width:auto;margin-top:4px}
+.form-msg{font-size:.92rem;min-height:1.4em;color:var(--granate)}
+.map{border:0;width:100%;height:100%;min-height:340px;border-radius:4px;background:var(--tint)}
+.info{margin-top:24px;display:grid;gap:4px;color:var(--muted)}
+.info a{font-weight:700;text-decoration:none}
+
+/* Pie */
+footer{background:var(--ink);color:#d9cfd1;padding:40px 0 calc(40px + env(safe-area-inset-bottom,0px));font-size:.9rem}
+.foot{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between}
+footer a{color:#fff}
+footer nav{display:flex;gap:20px;margin:0}
+
+@media (max-width:860px){
+  .hero{padding:44px 0 64px}
+  .hero-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .treat{grid-template-columns:1fr}
+  .steps,.team{grid-template-columns:1fr}
+  .team{grid-template-columns:repeat(2,1fr)}
+  section.block{padding:64px 0}
+}
+@media (max-width:520px){
+  .team,.row2{grid-template-columns:1fr}
+  .brand small{display:none}
+  .ctas .btn{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#inicio">
+      <span class="mono" aria-hidden="true">ED</span>
+      <span><b>Clínica E. Domínguez</b><small data-i18n="tagline">Odontología en Valls</small></span>
+    </a>
+    <nav aria-label="Principal">
+      <a href="#tratamientos" data-i18n="nav1">Tratamientos</a>
+      <a href="#primera-visita" data-i18n="nav2">Primera visita</a>
+      <a href="#equipo" data-i18n="nav3">Equipo</a>
+      <a href="#contacto" data-i18n="nav4">Contacto</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma / Idioma">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="ca" aria-pressed="false">CA</button>
+    </div>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 data-i18n="h1">Odontología integral en Valls</h1>
+        <p class="lead" data-i18n="heroLead">Atención dental para adultos y niños, con diagnóstico personalizado y un plan de tratamiento explicado con detalle antes de comenzar.</p>
+        <div class="ctas">
+          <a class="btn btn-solid" href="#contacto" data-i18n="ctaBook">Solicitar cita</a>
+          <a class="btn btn-line" href="tel:+34977602334"><span data-i18n="ctaCall">Teléfono:</span> 977 60 23 34</a>
+        </div>
+        <p class="addr">Passeig de l'Estació, 5 · 43800 Valls (Tarragona)</p>
+      </div>
+
+      <aside class="status" id="panelHorario" aria-live="polite">
+        <div class="status-now"><span class="dot" aria-hidden="true"></span><span id="statusTitle">Abierto ahora</span></div>
+        <p class="status-sub" id="statusSub"></p>
+        <ul class="week" id="week"></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FICTICIO: tratamientos de ejemplo -->
+  <section class="block" id="tratamientos">
+    <div class="wrap">
+      <div class="head">
+        <h2 data-i18n="tTitle">Tratamientos</h2>
+        <p class="lead" data-i18n="tLead">Ofrecemos las principales especialidades odontológicas en un mismo centro.</p>
+      </div>
+      <div class="treat">
+        <article><h3 data-i18n="t1">Odontología general e higiene</h3><p data-i18n="t1d">Revisiones periódicas, higiene profesional y tratamiento de caries para preservar la salud bucodental.</p></article>
+        <article><h3 data-i18n="t2">Implantología</h3><p data-i18n="t2d">Reposición de piezas dentales mediante implantes, con estudio radiológico previo de cada caso.</p></article>
+        <article><h3 data-i18n="t3">Ortodoncia</h3><p data-i18n="t3d">Tratamientos con brackets y alineadores transparentes para niños y adultos, con seguimiento en cada fase.</p></article>
+        <article><h3 data-i18n="t4">Estética dental</h3><p data-i18n="t4d">Blanqueamiento y carillas para mejorar el color, la forma y la armonía de la sonrisa.</p></article>
+        <article><h3 data-i18n="t5">Odontopediatría</h3><p data-i18n="t5d">Atención especializada para los más pequeños, centrada en la prevención y en una experiencia tranquila.</p></article>
+        <article><h3 data-i18n="t6">Urgencias dentales</h3><p data-i18n="t6d">En caso de dolor o fractura dental, contacte por teléfono y le atenderemos con la mayor brevedad posible.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block visit" id="primera-visita">
+    <div class="wrap">
+      <div class="head">
+        <h2 data-i18n="vTitle">Su primera visita</h2>
+      </div>
+      <ol class="steps">
+        <li><h3 data-i18n="v1">Solicitud de cita</h3><p data-i18n="v1d">Por teléfono o mediante el formulario. Nuestro equipo le contactará para confirmar fecha y hora.</p></li>
+        <li><h3 data-i18n="v2">Exploración y diagnóstico</h3><p data-i18n="v2d">Realizamos una exploración completa y las pruebas necesarias para valorar su caso.</p></li>
+        <li><h3 data-i18n="v3">Plan de tratamiento</h3><p data-i18n="v3d">Le explicamos el tratamiento recomendado, sus fases y las alternativas disponibles.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FICTICIO: equipo de ejemplo. Cambiar nombres, cargos y nº de colegiado -->
+  <section class="block" id="equipo">
+    <div class="wrap">
+      <div class="head">
+        <h2 data-i18n="eTitle">Equipo médico</h2>
+        <p class="lead" data-i18n="eLead">Profesionales colegiados con formación en las distintas especialidades odontológicas.</p>
+      </div>
+      <div class="team">
+        <div class="person"><div class="avatar" aria-hidden="true">ED</div><h3>Dra. Elena Domínguez</h3><p data-i18n="e1">Directora médica · Odontología general e implantología</p><p>Col. nº 43000000</p></div>
+        <div class="person"><div class="avatar" aria-hidden="true">MP</div><h3>Dr. Marc Puig</h3><p data-i18n="e2">Ortodoncia</p><p>Col. nº 43000001</p></div>
+        <div class="person"><div class="avatar" aria-hidden="true">LS</div><h3>Laura Serra</h3><p data-i18n="e3">Higienista dental</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contacto">
+    <div class="wrap contact-grid">
+      <div>
+        <h2 data-i18n="cTitle">Solicitar cita</h2>
+        <p class="lead" data-i18n="cLead">Complete el formulario y le contactaremos para concertar su visita. Para urgencias, llame directamente a la clínica.</p>
+        <!-- FICTICIO: crear cuenta en formspree.io y sustituir TU_ID -->
+        <form id="form" action="https://formspree.io/f/TU_ID" method="POST" style="margin-top:28px">
+          <div class="row2">
+            <label><span data-i18n="fName">Nombre y apellidos</span><input name="nombre" required autocomplete="name"></label>
+            <label><span data-i18n="fPhone">Teléfono</span><input name="telefono" type="tel" required autocomplete="tel"></label>
+          </div>
+          <label><span data-i18n="fWhen">Preferencia horaria</span>
+            <select name="preferencia">
+              <option data-i18n="fAm">Mañana</option>
+              <option data-i18n="fPm">Tarde</option>
+              <option data-i18n="fAny">Sin preferencia</option>
+            </select>
+          </label>
+          <label><span data-i18n="fMsg">Motivo de la consulta (opcional)</span><textarea name="mensaje"></textarea></label>
+          <label class="check"><input type="checkbox" required><span data-i18n="fPriv">He leído y acepto la <a href="#">política de privacidad</a>.</span></label>
+          <div><button class="btn btn-solid" type="submit" data-i18n="fSend">Enviar solicitud</button></div>
+          <p class="form-msg" id="formMsg" role="status"></p>
+        </form>
+        <div class="info">
+          <span>Passeig de l'Estació, 5 · 43800 Valls</span>
+          <a href="tel:+34977602334">977 60 23 34</a>
+          <a href="mailto:info@clinicaedominguez.com">info@clinicaedominguez.com</a><!-- FICTICIO -->
+        </div>
+      </div>
+      <iframe class="map" title="Mapa: Passeig de l'Estació 5, Valls" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Passeig+de+l%27Estaci%C3%B3+5,+43800+Valls&output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<!-- FICTICIO: enlazar páginas legales cuando estén redactadas -->
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="year"></span> Clínica E. Domínguez · Valls</span>
+    <nav aria-label="Legal">
+      <a href="#" data-i18n="l1">Aviso legal</a>
+      <a href="#" data-i18n="l2">Privacidad</a>
+      <a href="#" data-i18n="l3">Cookies</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+const T = {
+  es:{
+    tagline:"Odontología en Valls",
+    nav1:"Tratamientos",
+    nav2:"Primera visita",
+    nav3:"Equipo",
+    nav4:"Contacto",
+    h1:"Odontología integral en Valls",
+    heroLead:"Atención dental para adultos y niños, con diagnóstico personalizado y un plan de tratamiento explicado con detalle antes de comenzar.",
+    ctaBook:"Solicitar cita",
+    ctaCall:"Teléfono:",
+    tTitle:"Tratamientos",
+    tLead:"Ofrecemos las principales especialidades odontológicas en un mismo centro.",
+    t1:"Odontología general e higiene",
+    t1d:"Revisiones periódicas, higiene profesional y tratamiento de caries para preservar la salud bucodental.",
+    t2:"Implantología",
+    t2d:"Reposición de piezas dentales mediante implantes, con estudio radiológico previo de cada caso.",
+    t3:"Ortodoncia",
+    t3d:"Tratamientos con brackets y alineadores transparentes para niños y adultos, con seguimiento en cada fase.",
+    t4:"Estética dental",
+    t4d:"Blanqueamiento y carillas para mejorar el color, la forma y la armonía de la sonrisa.",
+    t5:"Odontopediatría",
+    t5d:"Atención especializada para los más pequeños, centrada en la prevención y en una experiencia tranquila.",
+    t6:"Urgencias dentales",
+    t6d:"En caso de dolor o fractura dental, contacte por teléfono y le atenderemos con la mayor brevedad posible.",
+    vTitle:"Su primera visita",
+    v1:"Solicitud de cita",
+    v1d:"Por teléfono o mediante el formulario. Nuestro equipo le contactará para confirmar fecha y hora.",
+    v2:"Exploración y diagnóstico",
+    v2d:"Realizamos una exploración completa y las pruebas necesarias para valorar su caso.",
+    v3:"Plan de tratamiento",
+    v3d:"Le explicamos el tratamiento recomendado, sus fases y las alternativas disponibles.",
+    eTitle:"Equipo médico",
+    eLead:"Profesionales colegiados con formación en las distintas especialidades odontológicas.",
+    e1:"Directora médica · Odontología general e implantología",
+    e2:"Ortodoncia",
+    e3:"Higienista dental",
+    cTitle:"Solicitar cita",
+    cLead:"Complete el formulario y le contactaremos para concertar su visita. Para urgencias, llame directamente a la clínica.",
+    fName:"Nombre y apellidos",
+    fPhone:"Teléfono",
+    fWhen:"Preferencia horaria",
+    fAm:"Mañana",
+    fPm:"Tarde",
+    fAny:"Sin preferencia",
+    fMsg:"Motivo de la consulta (opcional)",
+    fPriv:"He leído y acepto la <a href=\"#\">política de privacidad</a>.",
+    fSend:"Enviar solicitud",
+    l1:"Aviso legal",
+    l2:"Privacidad",
+    l3:"Cookies",
+    days:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"], closedDay:"Cerrado",
+    openNow:"Abierto ahora", closedNow:"Cerrado ahora", until:"Hoy hasta las ", opensToday:"Hoy abrimos a las ",
+    opensOn:(d,h)=>`Abrimos el ${d.toLowerCase()} a las ${h}`,
+    sent:"Solicitud enviada. Le contactaremos en breve.", demo:"Formulario de prueba: el envío aún no está conectado.", err:"No ha sido posible enviar la solicitud. Puede llamarnos al 977 60 23 34."
+  },
+  ca:{
+    tagline:"Odontologia a Valls",
+    nav1:"Tractaments",
+    nav2:"Primera visita",
+    nav3:"Equip",
+    nav4:"Contacte",
+    h1:"Odontologia integral a Valls",
+    heroLead:"Atenció dental per a adults i infants, amb diagnòstic personalitzat i un pla de tractament explicat amb detall abans de començar.",
+    ctaBook:"Sol·licitar cita",
+    ctaCall:"Telèfon:",
+    tTitle:"Tractaments",
+    tLead:"Oferim les principals especialitats odontològiques en un mateix centre.",
+    t1:"Odontologia general i higiene",
+    t1d:"Revisions periòdiques, higiene professional i tractament de càries per preservar la salut bucodental.",
+    t2:"Implantologia",
+    t2d:"Reposició de peces dentals mitjançant implants, amb estudi radiològic previ de cada cas.",
+    t3:"Ortodòncia",
+    t3d:"Tractaments amb brackets i alineadors transparents per a infants i adults, amb seguiment a cada fase.",
+    t4:"Estètica dental",
+    t4d:"Blanquejament i carilles per millorar el color, la forma i l'harmonia del somriure.",
+    t5:"Odontopediatria",
+    t5d:"Atenció especialitzada per als més petits, centrada en la prevenció i en una experiència tranquil·la.",
+    t6:"Urgències dentals",
+    t6d:"En cas de dolor o fractura dental, contacti per telèfon i l'atendrem al més aviat possible.",
+    vTitle:"La seva primera visita",
+    v1:"Sol·licitud de cita",
+    v1d:"Per telèfon o mitjançant el formulari. El nostre equip el contactarà per confirmar la data i l'hora.",
+    v2:"Exploració i diagnòstic",
+    v2d:"Fem una exploració completa i les proves necessàries per valorar el seu cas.",
+    v3:"Pla de tractament",
+    v3d:"Li expliquem el tractament recomanat, les seves fases i les alternatives disponibles.",
+    eTitle:"Equip mèdic",
+    eLead:"Professionals col·legiats amb formació en les diferents especialitats odontològiques.",
+    e1:"Directora mèdica · Odontologia general i implantologia",
+    e2:"Ortodòncia",
+    e3:"Higienista dental",
+    cTitle:"Sol·licitar cita",
+    cLead:"Ompli el formulari i el contactarem per concertar la seva visita. Per a urgències, truqui directament a la clínica.",
+    fName:"Nom i cognoms",
+    fPhone:"Telèfon",
+    fWhen:"Preferència horària",
+    fAm:"Matí",
+    fPm:"Tarda",
+    fAny:"Sense preferència",
+    fMsg:"Motiu de la consulta (opcional)",
+    fPriv:"He llegit i accepto la <a href=\"#\">política de privacitat</a>.",
+    fSend:"Enviar sol·licitud",
+    l1:"Avís legal",
+    l2:"Privacitat",
+    l3:"Galetes",
+    days:["Diumenge","Dilluns","Dimarts","Dimecres","Dijous","Divendres","Dissabte"], closedDay:"Tancat",
+    openNow:"Obert ara", closedNow:"Tancat ara", until:"Avui fins a les ", opensToday:"Avui obrim a les ",
+    opensOn:(d,h)=>`Obrim el ${d.toLowerCase()} a les ${h}`,
+    sent:"Sol·licitud enviada. El contactarem aviat.", demo:"Formulari de prova: l'enviament encara no està connectat.", err:"No ha estat possible enviar la sol·licitud. Pot trucar-nos al 977 60 23 34."
+  }
+};
+
+/* Horario real: [apertura, cierre] en minutos. 0 = domingo */
+const HOURS = {1:[570,1200],2:[570,1200],3:[570,1200],4:[600,1200],5:[570,840]};
+const fmt = m => `${Math.floor(m/60)}:${String(m%60).padStart(2,"0")}`;
+let lang = "es";
+
+function renderStatus(){
+  const t = T[lang], now = new Date(), d = now.getDay(), m = now.getHours()*60 + now.getMinutes();
+  const today = HOURS[d], box = document.getElementById("panelHorario") || document.querySelector(".status");
+  if (!box) return;
+  let open = today && m >= today[0] && m < today[1], sub;
+  if (open) sub = t.until + fmt(today[1]);
+  else if (today && m < today[0]) sub = t.opensToday + fmt(today[0]);
+  else {
+    let n = d;
+    for (let i=1;i<=7;i++){ n=(d+i)%7; if (HOURS[n]) break; }
+    sub = t.opensOn(t.days[n], fmt(HOURS[n][0]));
+  }
+  box.classList.toggle("closed", !open);
+  const title = box.querySelector("#statusTitle"), subEl = box.querySelector("#statusSub"), week = box.querySelector("#week");
+  if (title) title.textContent = open ? t.openNow : t.closedNow;
+  if (subEl) subEl.textContent = sub;
+  const order = [1,2,3,4,5,6,0];
+  if (week) week.innerHTML = order.map(i => {
+    const h = HOURS[i], cls = [i===d?"today":"", h?"":"off"].join(" ").trim();
+    return `<li class="${cls}"><span>${t.days[i]}</span><span>${h ? fmt(h[0])+"–"+fmt(h[1]) : t.closedDay}</span></li>`;
+  }).join("");
+}
+
+function setLang(l){
+  lang = T[l] ? l : "es";
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const v = T[lang][el.dataset.i18n];
+    if (typeof v === "string") el.innerHTML = v;
+  });
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang));
+  renderStatus();
+  try { localStorage.setItem("lang", lang); } catch(e){}
+}
+
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+
+let saved = null;
+try { saved = localStorage.getItem("lang"); } catch(e){}
+setLang(saved || ((navigator.language||"").toLowerCase().startsWith("ca") ? "ca" : "es"));
+setInterval(renderStatus, 60000);
+{ const y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear(); }
+
+/* Envío del formulario */
+const formEl = document.getElementById("form");
+if (formEl) formEl.addEventListener("submit", async e => {
+  e.preventDefault();
+  const f = e.target, msg = document.getElementById("formMsg");
+  if (f.action.includes("TU_ID")) { msg.textContent = T[lang].demo; return; }
+  try {
+    const r = await fetch(f.action, {method:"POST", body:new FormData(f), headers:{Accept:"application/json"}});
+    msg.textContent = r.ok ? T[lang].sent : T[lang].err;
+    if (r.ok) f.reset();
+  } catch { msg.textContent = T[lang].err; }
+});
+});
+</script>
+</body>
+</html>
